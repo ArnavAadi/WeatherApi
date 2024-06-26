@@ -3,10 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 30%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
 </head>
 <body>
-<h1>Weather Data Api</h1>
-<p>Url Format: http://127.0.0.1:5000/api/v1/station/date</p>
-<p>Url Example: http://127.0.0.1:5000/api/v1/10/1988-10-25</p>
+    <h1>Weather Data Api</h1>
+    <p>Url Format: http://127.0.0.1:5000/api/v1/station/date</p>
+    <p>Url Example: http://127.0.0.1:5000/api/v1/10/1988-10-25</p>
+    <p>Url Example for Entire data of station: http://127.0.0.1:5000/api/v1/10</p>
+    <p>Url Example for yearly data: http://127.0.0.1:5000/api/v1/10/yearly/1969</p>
+    <table>
+      <tr>
+        <th>STAID</th>
+        <th>STANAME</th>
+      </tr>
+        {% for index,item in data.iterrows() %}
+      <tr>
+        <td>{{item["STAID"]}}</td>
+        <td>{{item[1]}}</td>
+      </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
